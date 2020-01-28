@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SublimePorteApplication.Data;
@@ -20,9 +22,13 @@ namespace SublimePorteApplication.Controllers
     public class AccountController : Base.BaseController    
     {
         private Accounts _accounts;
-        public AccountController(IAccountRepository repo, IMapper mapper, UserManager<ApplicationUser> userManager) : base(repo, mapper)
+        private IHttpContextAccessor HttpContextAccessor;
+        private string userId;
+
+        public AccountController(IAccountRepository repo, IMapper mapper, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor) : base(repo, mapper)
         {
             _accounts = new Accounts(repo, userManager);
+            userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
 
         [HttpGet, Route("{id}")]
@@ -49,6 +55,15 @@ namespace SublimePorteApplication.Controllers
             await _repo.SaveChangesAsync();
 
             return Created($"/register/{result.User.Id}/", _mapper.Map<RegisterUserModel>(result.User));
+        }
+
+        [HttpGet, Route("profile/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            var result = await _accounts.GetAsync(userId);
+
+            return Ok(_mapper.Map<UserProfileModel>(result));
         }
 
         public IActionResult Index()

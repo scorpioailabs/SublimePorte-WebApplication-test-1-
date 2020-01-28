@@ -22,7 +22,6 @@ namespace SublimePorteApplication.Data
                     FirstName = "Zak",
                     LastName = "Ali",
                     Email = "sublime1@email.com",
-                    SublimeName = "sublime1",
                     Address = "1 Kayi Road, Istanbul, Turkey",
                     ProfileDescription = "Zak is a backend developer and is an avid history fan," +
                     " follow me to find out more!"

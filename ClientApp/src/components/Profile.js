@@ -50,7 +50,7 @@ export class Register extends Component {
     address(event) {
         this.setState({ address: event.target.value })
     }
-    
+
 
     registerSubmit(event) {
         fetch('https://localhost:44302/accounts/register', {
@@ -75,8 +75,8 @@ export class Register extends Component {
         //this.props.history.push("/register");
 
     }
-    
-    
+
+
     render() {
         return (
             <div>
@@ -111,7 +111,7 @@ export class Register extends Component {
 
                 <div className="form-group">
                     <label>address</label>
-                    <input type="text" className="form-control" onChange={this.address}  placeholder="Enter your address" />
+                    <input type="text" className="form-control" onChange={this.address} placeholder="Enter your address" />
                 </div>
 
                 <button type="submit" onClick={this.registerSubmit} className="btn btn-primary btn-block">Submit</button>

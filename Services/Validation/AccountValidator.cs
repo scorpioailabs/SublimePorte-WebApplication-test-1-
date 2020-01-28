@@ -16,7 +16,7 @@ namespace SublimePorteApplication.Services.Validation
         {
             var errors = new List<AccountValidationError>();
 
-            if (String.IsNullOrEmpty(user.SublimeName))
+            if (String.IsNullOrEmpty(user.UserName))
             {
                 errors.Add(new AccountValidationError
                 {

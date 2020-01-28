@@ -8,7 +8,6 @@ namespace SublimePorteApplication.Domain
 {
     public class User : ApplicationUser
     {
-        public string SublimeName { get; set; }
         public string Address { get; set; }
         public DateTime? DoB { get; set; }
         public string ProfileDescription { get; set; } = "";

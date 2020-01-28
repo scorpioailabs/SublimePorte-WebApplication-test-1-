@@ -5,7 +5,7 @@ import { Home } from './components/Home';
 import AuthorizeRoute from './components/api-authorization/AuthorizeRoute';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
-import Login from "./components/login.component";
+import Login from "./components/Login";
 import Register from "./components/Register";
 
 import './custom.css'
@@ -18,7 +18,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/accounts/register' component={Register} />
-        <AuthorizeRoute path='/accounts/login' component={Login} />
+        <AuthorizeRoute path='/auth/login' component={Login} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
       </Layout>
     );

@@ -20,4 +20,10 @@ namespace SublimePorteApplication.Services.Model.Enums
         EMAIL_ADDRESS_ALREADY_EXISTS,
         ACCOUNT_INVALID
     }
+
+    public enum LoginValidationError
+    {
+        USERNAME_MISSING,
+        USERNAME_TOO_LONG
+    }
 }

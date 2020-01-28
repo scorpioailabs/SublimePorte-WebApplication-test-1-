@@ -37,7 +37,7 @@ namespace SublimePorteApplication.Services.UseCases
         {
             var users = await _repo.QueryAsync(new AccountQuerySpecification
             {
-                WhereClause = u => u.SublimeName == username
+                WhereClause = u => u.UserName == username
             });
 
             return users.FirstOrDefault();
@@ -58,7 +58,7 @@ namespace SublimePorteApplication.Services.UseCases
             var users = await _repo.QueryAsync(new AccountQuerySpecification
             {
                 WhereClause = u => !u.EmailConfirmed,
-                OrderBy = u => u.SublimeName
+                OrderBy = u => u.UserName
             });
 
             return users;

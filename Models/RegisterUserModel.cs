@@ -9,8 +9,6 @@ namespace SublimePorteApplication.Models
     public class RegisterUserModel
     {
         [Required]
-        public string sublimeName { get; set; }
-        [Required]
         public string firstName { get; set; }
         [Required]
         public string lastName { get; set; }
